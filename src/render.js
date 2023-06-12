@@ -1,5 +1,5 @@
 const RenderPosition = {
-  BEFORBEGIN: 'beforebegin',
+  BEFOREBEGIN: 'beforebegin',
   AFTERBEGIN: 'afterbegin',
   BEFOREEND: 'beforeend',
   AFTEREND: 'afterend',
@@ -13,7 +13,7 @@ function createElement(template) {
 }
 
 function render(component, container, place = RenderPosition.BEFOREEND) {
-  container.insertAdjacentElement(place,component.getElement(place, component.getElement()));
+  container.insertAdjacentElement(place, component.element);
 }
 
-export {RenderPosition,createElement,render};
+export {RenderPosition, createElement, render};
