@@ -28,16 +28,12 @@ const getTime = (date) => dayjs(date).format(TIME_FORMAT);
 
 const getDateTime = (date) => dayjs(date).format(DATE_TIME_FORMAT);
 
-const getRandomInteger = (a = 0, b = 1) => Math.floor(Math.random() * (Math.floor(b) - Math.ceil(a) + 1)) + Math.ceil(a);
-
-const getRandomElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
-
 const checkDatesRelativeToCurrent = (dateFrom, dateTo) => dayjs(dateFrom).isBefore(dayjs()) && dayjs(dateTo).isAfter(dayjs());
 const isEventPlanned = (dateFrom, dateTo) => dayjs(dateFrom).isAfter(dayjs()) || checkDatesRelativeToCurrent(dateFrom, dateTo);
 const isEventPassed = (dateFrom, dateTo) => dayjs(dateTo).isBefore(dayjs()) || checkDatesRelativeToCurrent(dateFrom, dateTo);
 const checkFavoriteOption = (isFavorite) => (isFavorite) ? 'event__favorite-btn--active' : '';
 const isSubmitDisabledByDate = (dateTo, dateFrom) => dayjs(dateTo).diff(dayjs(dateFrom)) <= 0;
-const capitalizeFirstSym = (str) => str[0].toUpperCase() + str.slice(1);
+
 
 const filter = {
   'everything': (events) => events.map((event) => event),
@@ -109,14 +105,11 @@ const addDestinationName = (destination, destinations) =>
   destinations.find((item) => item.id === destination).name;
 
 export {
-  getRandomInteger,
-  getRandomElement,
   humanizePointDueDate,
   duration,
   getDate,
   getDateTime,
   getTime,
-  capitalizeFirstSym,
   filter,
   sortByPrice,
   sortByDuration,
